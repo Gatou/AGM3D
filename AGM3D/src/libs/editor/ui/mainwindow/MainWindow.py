@@ -1,11 +1,18 @@
 
 from libs.editor.GuiLibs import *
-from Ui_MainWindow import Ui_MainWindow
+from libs.editor.ui.mainwindow.Ui_MainWindow import Ui_MainWindow
 
 class MainWindow(QMainWindow):
+
+    __instance = None
     
+    @staticmethod
+    def instance():
+        if not MainWindow.__instance:
+            MainWindow.__instance = MainWindow()
+        return MainWindow.__instance
+     
     def __init__(self):
-        #__builtin__.MAIN_WINDOW = self
         QMainWindow.__init__(self)
         self.setup_ui()
         

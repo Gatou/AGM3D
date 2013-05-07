@@ -2,15 +2,26 @@
 
 import sys, os
 from libs.editor.GuiLibs import *
-from libs.editor.mgr.EditorManager import EditorManager
-from libs.editor.mgr.MenuManager import MenuManager
 from libs.editor.ui.mainwindow.MainWindow import MainWindow
+from libs.editor.mgr.EditorManager import EditorManager
 
 app = QApplication(sys.argv)
 
-#ProjectMgr.open_project("C:/Users/gaetan/Documents/lala")
-EditorManager.MAIN_WINDOW = MainWindow()
-MenuManager.init()
+#ProjectManager.open_project("C:/Users/gaetan/Documents/lala")
+#print MainWindow()
+#print MainWindow()
+#EditorManager.MAIN_WINDOW = MainWindow()
 
-EditorManager.MAIN_WINDOW.show()
+MainWindow.instance()
+EditorManager.create()
+
+MainWindow.instance().show()
+
+from libs.editor.mgr.ProjectManager import ProjectManager
+ProjectManager.open_project("C:\\Users\\gaetan\\Documents\\lala")
+
+#MenuManager.add_menu("File/Import", 0, 0)
+
+
+
 sys.exit(app.exec_())
